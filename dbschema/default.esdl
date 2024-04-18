@@ -14,26 +14,24 @@ module default {
         finished_at: datetime;
     }
 
-    type FooTask {
+    abstract type HasStatus {
         required status -> TaskStatus {
+            on target delete delete source;
             constraint exclusive;
         }
+    }
+
+    type FooTask extending HasStatus {
         required given_id: str {
             constraint exclusive;
         }
     }
 
-    type BarTask {
-        required status -> TaskStatus {
-            constraint exclusive;
-        }
+    type BarTask extending HasStatus {
         status_code: int32;
     }
 
-    type BazTask {
-        required status -> TaskStatus {
-            constraint exclusive;
-        }
+    type BazTask extending HasStatus {
         rand_num: int32;
     }
 }
