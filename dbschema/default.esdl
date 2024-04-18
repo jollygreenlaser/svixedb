@@ -9,8 +9,10 @@ module default {
             default := datetime_of_statement();
             readonly := true;
         }
+        index on (.execute_after);
 
         started_at: datetime;
+        index on (exists .started_at);
         finished_at: datetime;
     }
 
