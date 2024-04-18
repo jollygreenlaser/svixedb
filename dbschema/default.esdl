@@ -34,6 +34,6 @@ module default {
         required status -> TaskStatus {
             constraint exclusive;
         }
-        required rand_num: int32;
+        rand_num: int32;
     }
 }
